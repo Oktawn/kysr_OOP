@@ -3,10 +3,8 @@ using System;
 using System.Collections;
 using System.Windows.Input;
 
-namespace BST
+namespace BST_three
 {
-
-
     class Node
     {
         private static int index = 0;
@@ -34,7 +32,9 @@ namespace BST
         private Node root;
         private int count;
 
+#pragma warning disable IDE1006 // Стили именования
         private bool is_empty() { return root == null; }
+#pragma warning restore IDE1006 // Стили именования
 
         private Node add_node(CCall call)
         {

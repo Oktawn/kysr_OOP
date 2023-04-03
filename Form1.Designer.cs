@@ -34,7 +34,7 @@
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.abonent_number = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.abonent_thems = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.SuspendLayout();
@@ -110,13 +110,13 @@
             this.abonent_number.Text = "+";
             this.abonent_number.TextChanged += new System.EventHandler(this.abonent_number_TextChanged);
             // 
-            // textBox3
+            // abonent_thems
             // 
-            this.textBox3.Location = new System.Drawing.Point(228, 118);
-            this.textBox3.MaxLength = 20;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 6;
+            this.abonent_thems.Location = new System.Drawing.Point(228, 118);
+            this.abonent_thems.MaxLength = 20;
+            this.abonent_thems.Name = "abonent_thems";
+            this.abonent_thems.Size = new System.Drawing.Size(100, 20);
+            this.abonent_thems.TabIndex = 6;
             // 
             // comboBox1
             // 
@@ -147,6 +147,7 @@
             this.materialFlatButton1.TabIndex = 8;
             this.materialFlatButton1.Text = "create call";
             this.materialFlatButton1.UseVisualStyleBackColor = false;
+            this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
             // 
             // Form1
             // 
@@ -155,7 +156,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.materialFlatButton1);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.abonent_thems);
             this.Controls.Add(this.abonent_number);
             this.Controls.Add(this.materialLabel4);
             this.Controls.Add(this.materialLabel3);
@@ -179,7 +180,7 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private System.Windows.Forms.TextBox abonent_number;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox abonent_thems;
         private System.Windows.Forms.ComboBox comboBox1;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
     }

@@ -13,9 +13,9 @@ namespace Ccall
         public CCall()
         {
             priority = false;
-            thems = null;
-            abonent = null;
-            numbers = null;
+            thems = "br";
+            abonent = "bruh";
+            numbers = "+79xxxxxxxxx";
             start_timer = DateTime.Now.Second;
         }
         public CCall(bool priority, string thems, string numbers, string abonent)
@@ -56,6 +56,29 @@ namespace Ccall
         }
         public double Start_timer
         { get { return start_timer; } }
+
+        public bool set_string(string t)
+        {
+            foreach (var item in t)
+            {
+                if (char.IsLetter(item))
+                    continue;
+                else
+                    return false;
+            }
+            return true;
+        }
+        public bool set_number(string t)
+        {
+            foreach (var item in t)
+            {
+                if (char.IsDigit(item))
+                    continue;
+                else
+                    return false;
+            }
+            return true;
+        }
 
         public double duration_time => Convert.ToDouble(DateTime.Now.Second - Start_timer);
     }
