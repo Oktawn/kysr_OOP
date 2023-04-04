@@ -321,6 +321,7 @@
   <ItemGroup>
     <Compile Include="BST.cs" />
     <Compile Include="CCall.cs" />
+    <Compile Include="File_Work.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

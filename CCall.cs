@@ -2,7 +2,7 @@
 
 namespace Ccall
 {
-    internal class CCall
+    class CCall
     {
         private bool priority;
         private string thems;
@@ -13,17 +13,17 @@ namespace Ccall
         public CCall()
         {
             priority = false;
-            thems = "br";
-            abonent = "bruh";
-            numbers = "+79xxxxxxxxx";
+            thems = "programming";
+            abonent = "chel";
+            numbers = "+79XXXXXXXXX";
             start_timer = DateTime.Now.Second;
         }
         public CCall(bool priority, string thems, string numbers, string abonent)
         {
-            this.priority = priority;
-            this.thems = thems;
-            this.abonent = abonent;
-            this.numbers = numbers;
+            Priority = priority;
+            Abonent = thems;
+            Thems = abonent;
+            Numbers = numbers;
         }
         public CCall(CCall C)
         {
@@ -33,6 +33,7 @@ namespace Ccall
             numbers = C.numbers;
             start_timer = C.start_timer;
         }
+
 
         public bool Priority
         {
@@ -70,6 +71,8 @@ namespace Ccall
         }
         public bool set_number(string t)
         {
+            if (t.Length != 12)
+                return false;
             foreach (var item in t)
             {
                 if (char.IsDigit(item))
@@ -78,6 +81,19 @@ namespace Ccall
                     return false;
             }
             return true;
+        }
+        public bool set_priority(string t)
+        {
+            if (t == "False") return false;
+            return true;
+        }
+
+        public string get_all()
+        {
+            return Priority.ToString() + Environment.NewLine
+                + Abonent + Environment.NewLine
+                + Thems + Environment.NewLine
+                + Numbers + Environment.NewLine;
         }
 
         public double duration_time => Convert.ToDouble(DateTime.Now.Second - Start_timer);

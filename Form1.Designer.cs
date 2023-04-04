@@ -46,7 +46,10 @@
             this.name_abonent.Name = "name_abonent";
             this.name_abonent.Size = new System.Drawing.Size(100, 20);
             this.name_abonent.TabIndex = 0;
+            this.name_abonent.Text = "chel";
             this.name_abonent.TextChanged += new System.EventHandler(this.name_abonent_TextChanged);
+            this.name_abonent.Enter += new System.EventHandler(this.name_abonent_Enter);
+            this.name_abonent.Leave += new System.EventHandler(this.name_abonent_Leave);
             // 
             // materialLabel1
             // 
@@ -107,8 +110,10 @@
             this.abonent_number.Name = "abonent_number";
             this.abonent_number.Size = new System.Drawing.Size(100, 20);
             this.abonent_number.TabIndex = 5;
-            this.abonent_number.Text = "+";
+            this.abonent_number.Text = "+79XXXXXXXXX";
             this.abonent_number.TextChanged += new System.EventHandler(this.abonent_number_TextChanged);
+            this.abonent_number.Enter += new System.EventHandler(this.abonent_number_Enter);
+            this.abonent_number.Leave += new System.EventHandler(this.abonent_number_Leave);
             // 
             // abonent_thems
             // 
@@ -117,6 +122,9 @@
             this.abonent_thems.Name = "abonent_thems";
             this.abonent_thems.Size = new System.Drawing.Size(100, 20);
             this.abonent_thems.TabIndex = 6;
+            this.abonent_thems.Text = "programming";
+            this.abonent_thems.Enter += new System.EventHandler(this.abonent_thems_Enter);
+            this.abonent_thems.Leave += new System.EventHandler(this.abonent_thems_Leave);
             // 
             // comboBox1
             // 
@@ -173,7 +181,7 @@
 
 
         #endregion
-        
+
         private System.Windows.Forms.TextBox name_abonent;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
