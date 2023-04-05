@@ -15,7 +15,7 @@ namespace test_K
             using (StreamWriter writer = File.CreateText(path))
             {
                 foreach (var item in three.get_root().date.get_all())
-                    writer.WriteLine(item);
+                    writer.Write(item);
                 writer.Close();
             }
             /* using (BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.OpenOrCreate)))
@@ -35,7 +35,7 @@ namespace test_K
                 if (line_file > 0)
                     using (StreamReader reader = File.OpenText(path))
                     {
-                        for (int i = 0; i < line_file; i++)
+                        for (int i = 0; i < line_file/5; i++)
                         {
                             CCall call = new CCall();
                             //call.Priority = Convert.ToBoolean(reader.ReadLine());

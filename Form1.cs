@@ -11,7 +11,7 @@ namespace test_K
     public partial class Form1 : MaterialForm
     {
         BST thee = new BST();
-        File_work file_Work = new File_work();
+        readonly File_work file_Work = new File_work();
         public Form1()
         {
             InitializeComponent();

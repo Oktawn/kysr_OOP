@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Ccall
 {
@@ -81,7 +82,7 @@ namespace Ccall
         {
             if (t.Length != 12)
                 return false;
-            foreach (var item in t)
+            foreach (var item in t.Skip(1))
             {
                 if (char.IsDigit(item))
                     continue;
@@ -103,7 +104,7 @@ namespace Ccall
                 + Numbers + Environment.NewLine
                 + Abonent + Environment.NewLine
                 + Thems + Environment.NewLine
-                + StartCall + Environment.NewLine;
+                + StartCall.ToString() + Environment.NewLine;
         }
 
         public double duration_time => Convert.ToDouble(DateTime.Now.Second - Start_timer);

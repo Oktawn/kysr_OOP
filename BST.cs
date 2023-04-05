@@ -99,8 +99,9 @@ namespace BST_three
                 return true;
             if (call.Numbers.CompareTo(root.key) < 0)
                 return search_list(root.left, call);
-            else
+            else if (root.key.CompareTo(call.Numbers) <= 0)
                 return search_list(root.right, call);
+            return false;
         }
         public bool search_list(CCall call)
         { return search_list(root, call); }
