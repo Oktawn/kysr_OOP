@@ -1,9 +1,9 @@
-﻿using BST_three;
-using Ccall;
+﻿using Ccall;
+using System;
+using BST_three;
+using System.Linq;
 using MaterialSkin;
 using MaterialSkin.Controls;
-using System;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace test_K
@@ -11,12 +11,12 @@ namespace test_K
     public partial class Form1 : MaterialForm
     {
         BST thee = new BST();
-
+        File_work file_Work = new File_work();
         public Form1()
         {
-
             InitializeComponent();
 
+            file_Work.Write_in_BST(thee);
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
@@ -39,7 +39,6 @@ namespace test_K
         private void materialFlatButton1_Click(object sender, EventArgs e)
         {
             CCall temp = new CCall();
-            File_work file_Work = new File_work();
             temp.Priority = temp.set_priority(comboBox1.Text);
             temp.Thems = (temp.set_string(abonent_thems.Text)) ? abonent_thems.Text : temp.Thems;
             temp.Abonent = (temp.set_string(name_abonent.Text)) ? name_abonent.Text : temp.Abonent;

@@ -8,6 +8,7 @@ namespace Ccall
         private string thems;
         private string abonent;
         private string numbers;
+        private DateTime start_call;
         private readonly double start_timer;
 
         public CCall()
@@ -16,14 +17,16 @@ namespace Ccall
             thems = "programming";
             abonent = "chel";
             numbers = "+79XXXXXXXXX";
-            start_timer = DateTime.Now.Second;
+            start_call = DateTime.Now;
+            start_timer = start_call.Second;
         }
-        public CCall(bool priority, string thems, string numbers, string abonent)
+        public CCall(bool priority, string thems, string numbers, string abonent, DateTime start_call)
         {
-            Priority = priority;
-            Abonent = thems;
-            Thems = abonent;
-            Numbers = numbers;
+            this.priority = priority;
+            this.abonent = thems;
+            this.thems = abonent;
+            this.numbers = numbers;
+            this.start_call = start_call;
         }
         public CCall(CCall C)
         {
@@ -54,6 +57,11 @@ namespace Ccall
         {
             get { return numbers; }
             set { numbers = value; }
+        }
+        public DateTime StartCall
+        {
+            get { return start_call; }
+            set { start_call = value; }
         }
         public double Start_timer
         { get { return start_timer; } }
@@ -90,10 +98,12 @@ namespace Ccall
 
         public string get_all()
         {
-            return Priority.ToString() + Environment.NewLine
+            return
+                Priority + Environment.NewLine
+                + Numbers + Environment.NewLine
                 + Abonent + Environment.NewLine
                 + Thems + Environment.NewLine
-                + Numbers + Environment.NewLine;
+                + StartCall + Environment.NewLine;
         }
 
         public double duration_time => Convert.ToDouble(DateTime.Now.Second - Start_timer);

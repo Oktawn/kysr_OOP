@@ -27,12 +27,14 @@ namespace BST_three
     class BST
     {
         private Node root;
+        private short count;
 
         private bool is_empty() { return root == null; }
 
         private Node add_node(CCall call)
         {
             Node knot = new Node(call);
+            count++;
             return knot;
         }
         private Node insert_hide(Node root, CCall call)
@@ -77,6 +79,7 @@ namespace BST_three
         public BST()
         {
             root = null;
+            count = 0;
         }
 
         public void insert(CCall call)
@@ -115,6 +118,10 @@ namespace BST_three
         public Node get_root()
         {
             return root;
+        }
+        public short size() 
+        {
+            return count;
         }
     }
 }
