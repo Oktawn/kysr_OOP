@@ -1,7 +1,9 @@
 ﻿using Ccall;
+using System.IO;
 
 namespace BST_three
 {
+
     public class Node<T> where T : CCall
     {
         public string key;
@@ -25,7 +27,7 @@ namespace BST_three
         private Node<T> root;
         private short count;
 
-        private bool is_empty(Node<T> root) { return root == null; }
+        private bool Is_empty(Node<T> root) { return root == null; }
 
         private Node<T> Add_node(T call)
         {
@@ -35,18 +37,18 @@ namespace BST_three
         }
         private Node<T> Insert_hide(Node<T> root, T call)
         {
-            if (is_empty(root))
+            if (Is_empty(root))
                 root = Add_node(call);
             else if (root.key.CompareTo(call.Numbers) < 0)
                 root.left = Insert_hide(root.left, call);
-            else if (root.key.CompareTo(call.Numbers) >= 0)
+            else
                 root.right = Insert_hide(root.right, call);
             return root;
 
         }
         private Node<T> Delete_hide(Node<T> root, T call)
         {
-            if (is_empty(root))
+            if (Is_empty(root))
                 return null;
             else if (root.key.CompareTo(call) < 0)
                 root.left = Delete_hide(root.left, call);
@@ -102,7 +104,7 @@ namespace BST_three
         { return Search_list(root, call); }
         public Node<T> GetNode(Node<T> root, string key)
         {
-            if (is_empty(root))
+            if (Is_empty(root))
                 return null;
             else if (key.CompareTo(root.key) < 0)
                 return GetNode(root.left, key);
@@ -119,5 +121,26 @@ namespace BST_three
         {
             return count;
         }
+
+        private readonly string path = "store.txt";
+
+        public void Read_BST()
+        {
+            using (StreamWriter writer = new StreamWriter(path))
+                Read_BST(root, writer);
+        }
+
+        private void Read_BST(Node<T> root, StreamWriter writer)
+        {
+            if (root != null)
+            {
+                Read_BST(root.left, writer);
+                foreach (var item in root.date.Get_all())
+                    writer.Write(item);
+                Read_BST(root.right, writer);
+            }
+        }
+
+
     }
 }

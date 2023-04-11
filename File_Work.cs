@@ -10,24 +10,7 @@ namespace test_K
     class File_work<T> where T : CCall
     {
         readonly string path = "store.txt";
-        public void Read_BST(BST<CCall> three)
-        {
-            using (StreamWriter writer = File.CreateText(path))
-            {
-                writer.WriteLine(three.Size());
-                foreach (var item in three.Get_root().date.get_all())
-                    writer.Write(item);
-                writer.Close();
-            }
-            /* using (BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.OpenOrCreate)))
-             {
-                 foreach (var item in three.get_root().date.get_all())
-                 {
-                     writer.Write(item);
-                 }
-                 writer.Close();
-             }*/
-        }
+        
         public void Write_in_BST(BST<CCall> three)
         {
             if (File.Exists(path))
@@ -36,18 +19,16 @@ namespace test_K
                 if (line_file > 0)
                     using (StreamReader reader = File.OpenText(path))
                     {
-                        for (int i = 0; i < line_file / 6; i++)
+                        for (int i = 0; i < line_file / 5; i++)
                         {
                             CCall call = new CCall();
-                            call.Id = Convert.ToInt32(reader.ReadLine());
                             //call.Priority = Convert.ToBoolean(reader.ReadLine());
-                            call.Priority = (call.set_priority(reader.ReadLine()));
+                            call.Priority = (call.Set_priority(reader.ReadLine()));
                             call.Numbers = reader.ReadLine();
                             call.Abonent = reader.ReadLine();
                             call.Thems = reader.ReadLine();
                             call.StartCall = Convert.ToDateTime(reader.ReadLine());
-                            three.Insert(call);
-                            
+                            three.Insert(call);                            
                         }
                     }
                 else MessageBox.Show("store empty");

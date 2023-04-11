@@ -38,7 +38,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.index_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priority_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.number_abonentn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name_abonentt = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -169,7 +168,6 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.index_number,
             this.priority_number,
             this.number_abonentn,
             this.name_abonentt,
@@ -179,13 +177,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(572, 171);
             this.dataGridView1.TabIndex = 9;
-            // 
-            // index_number
-            // 
-            this.index_number.HeaderText = "idx";
-            this.index_number.MaxInputLength = 3;
-            this.index_number.Name = "index_number";
-            this.index_number.ReadOnly = true;
             // 
             // priority_number
             // 
@@ -254,7 +245,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn index_number;
         private System.Windows.Forms.DataGridViewTextBoxColumn priority_number;
         private System.Windows.Forms.DataGridViewTextBoxColumn number_abonentn;
         private System.Windows.Forms.DataGridViewTextBoxColumn name_abonentt;

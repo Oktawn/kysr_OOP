@@ -11,11 +11,16 @@ namespace test_K
     public partial class Form1 : MaterialForm
     {
         BST<CCall> thee = new BST<CCall>();
-        readonly File_work<CCall> file_Work = new File_work<CCall>();
+        File_work<CCall> file_Work = new File_work<CCall>();
+
         public Form1()
         {
             InitializeComponent();
+
             file_Work.Write_in_BST(thee);
+            //Write_DGV(thee);
+
+
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
@@ -38,14 +43,14 @@ namespace test_K
         private void materialFlatButton1_Click(object sender, EventArgs e)
         {
             CCall temp = new CCall();
-            temp.Priority = temp.set_priority(comboBox1.Text);
-            temp.Thems = (temp.set_string(abonent_thems.Text)) ? abonent_thems.Text : temp.Thems;
-            temp.Abonent = (temp.set_string(name_abonent.Text)) ? name_abonent.Text : temp.Abonent;
-            temp.Numbers = (temp.set_number(abonent_number.Text)) ? abonent_number.Text : temp.Numbers;
+            temp.Priority = temp.Set_priority(comboBox1.Text);
+            temp.Thems = (temp.Set_string(abonent_thems.Text)) ? abonent_thems.Text : temp.Thems;
+            temp.Abonent = (temp.Set_string(name_abonent.Text)) ? name_abonent.Text : temp.Abonent;
+            temp.Numbers = (temp.Set_number(abonent_number.Text)) ? abonent_number.Text : temp.Numbers;
             if (!thee.Search_list(temp))
             {
                 thee.Insert(temp);
-                file_Work.Read_BST(thee);
+                thee.Read_BST();
                 Write_DGV(temp);
             }
             else
@@ -106,17 +111,23 @@ namespace test_K
 
         public void Write_DGV(CCall C)
         {
-            int n = dataGridView1.Rows.Add();
-            int i = 0;
-            switch (i)
-            {
-                case 0: { dataGridView1.Rows[n].Cells[i].Value = C.Id; i++; goto case 1; }
-                case 1: { dataGridView1.Rows[n].Cells[i].Value = C.Priority; i++; goto case 2; }
-                case 2: { dataGridView1.Rows[n].Cells[i].Value = C.Numbers; i++; goto case 3; }
-                case 3: { dataGridView1.Rows[n].Cells[i].Value = C.Abonent; i++; goto case 4; }
-                case 4: { dataGridView1.Rows[n].Cells[i].Value = C.Thems; i++; goto case 5; }
-                case 5: { dataGridView1.Rows[n].Cells[i].Value = C.StartCall.ToString(); i++; break; }
-            }
+            
+                int n = dataGridView1.Rows.Add();
+                int i = 0;
+                switch (i)
+                {
+                    case 0: { dataGridView1.Rows[n].Cells[i].Value = C.Priority; i++; goto case 1; }
+                    case 1: { dataGridView1.Rows[n].Cells[i].Value = C.Numbers; i++; goto case 2; }
+                    case 2: { dataGridView1.Rows[n].Cells[i].Value = C.Abonent; i++; goto case 3; }
+                    case 3: { dataGridView1.Rows[n].Cells[i].Value = C.Thems; i++; goto case 4; }
+                    case 4: { dataGridView1.Rows[n].Cells[i].Value = C.StartCall.ToString(); break; }
+                }
         }
+
+
+        //public void Write_DGV(BST<CCall> bST)
+        //{
+        //    Write_DGV(bST);
+        //}
     }
 }

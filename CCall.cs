@@ -5,7 +5,6 @@ namespace Ccall
 {
     public class CCall : IComparable<CCall>
     {
-        public int Id {  get; set; }
         private bool priority;
         private string thems;
         private string abonent;
@@ -68,7 +67,7 @@ namespace Ccall
         public double Start_timer
         { get { return start_timer; } }
 
-        public bool set_string(string t)
+        public bool Set_string(string t)
         {
             foreach (var item in t)
             {
@@ -79,7 +78,7 @@ namespace Ccall
             }
             return true;
         }
-        public bool set_number(string t)
+        public bool Set_number(string t)
         {
             if (t.Length != 12)
                 return false;
@@ -92,13 +91,13 @@ namespace Ccall
             }
             return true;
         }
-        public bool set_priority(string t)
+        public bool Set_priority(string t)
         {
             if (t == "False") return false;
             return true;
         }
 
-        public string get_all()
+        public string Get_all()
         {
             return
                 Priority + Environment.NewLine
@@ -118,7 +117,7 @@ namespace Ccall
 
         }
 
-        public double duration_time => Convert.ToDouble(DateTime.Now.Second - Start_timer);
+        public double Duration_time => Convert.ToDouble(DateTime.Now.Second - Start_timer);
     }
 }
 
