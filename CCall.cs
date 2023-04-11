@@ -3,8 +3,9 @@ using System.Linq;
 
 namespace Ccall
 {
-    class CCall
+    public class CCall : IComparable<CCall>
     {
+        public int Id {  get; set; }
         private bool priority;
         private string thems;
         private string abonent;
@@ -105,6 +106,16 @@ namespace Ccall
                 + Abonent + Environment.NewLine
                 + Thems + Environment.NewLine
                 + StartCall.ToString() + Environment.NewLine;
+        }
+
+        public int CompareTo(CCall other)
+        {
+            if (this.CompareTo(other) < 0)
+                return -1;
+            if (this.CompareTo(other) > 0)
+                return 1;
+            return 0;
+
         }
 
         public double duration_time => Convert.ToDouble(DateTime.Now.Second - Start_timer);

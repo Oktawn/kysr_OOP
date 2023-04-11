@@ -10,12 +10,11 @@ namespace test_K
 {
     public partial class Form1 : MaterialForm
     {
-        BST thee = new BST();
-        readonly File_work file_Work = new File_work();
+        BST<CCall> thee = new BST<CCall>();
+        readonly File_work<CCall> file_Work = new File_work<CCall>();
         public Form1()
         {
             InitializeComponent();
-
             file_Work.Write_in_BST(thee);
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
@@ -43,10 +42,11 @@ namespace test_K
             temp.Thems = (temp.set_string(abonent_thems.Text)) ? abonent_thems.Text : temp.Thems;
             temp.Abonent = (temp.set_string(name_abonent.Text)) ? name_abonent.Text : temp.Abonent;
             temp.Numbers = (temp.set_number(abonent_number.Text)) ? abonent_number.Text : temp.Numbers;
-            if (!thee.search_list(temp))
+            if (!thee.Search_list(temp))
             {
-                thee.insert(temp);
+                thee.Insert(temp);
                 file_Work.Read_BST(thee);
+                Write_DGV(temp);
             }
             else
                 MessageBox.Show("this abonent already calling");
@@ -65,13 +65,21 @@ namespace test_K
         private void abonent_number_TextChanged(object sender, EventArgs e)
         {
             if (abonent_number.Text == "+79XXXXXXXXX") return;
-            foreach (var item in abonent_number.Text.Skip(1))
-                if (!char.IsDigit(item))
+            if (abonent_number.Text[0] == '+')
+                foreach (var item in abonent_number.Text.Skip(1))
                 {
-                    MessageBox.Show("lox");
-                    abonent_number.Text = "+";
-                    break;
+                    if (!char.IsDigit(item))
+                    {
+                        MessageBox.Show("lox");
+                        abonent_number.Text = "+";
+                        break;
+                    }
                 }
+            else
+            {
+                MessageBox.Show("lox");
+                abonent_number.Text = "+";
+            }
         }
 
         private void name_abonent_Enter(object sender, EventArgs e)
@@ -96,6 +104,19 @@ namespace test_K
                 abonent_thems.Text = "programming";
         }
 
-
+        public void Write_DGV(CCall C)
+        {
+            int n = dataGridView1.Rows.Add();
+            int i = 0;
+            switch (i)
+            {
+                case 0: { dataGridView1.Rows[n].Cells[i].Value = C.Id; i++; goto case 1; }
+                case 1: { dataGridView1.Rows[n].Cells[i].Value = C.Priority; i++; goto case 2; }
+                case 2: { dataGridView1.Rows[n].Cells[i].Value = C.Numbers; i++; goto case 3; }
+                case 3: { dataGridView1.Rows[n].Cells[i].Value = C.Abonent; i++; goto case 4; }
+                case 4: { dataGridView1.Rows[n].Cells[i].Value = C.Thems; i++; goto case 5; }
+                case 5: { dataGridView1.Rows[n].Cells[i].Value = C.StartCall.ToString(); i++; break; }
+            }
+        }
     }
 }

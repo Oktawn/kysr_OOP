@@ -37,6 +37,14 @@
             this.abonent_thems = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.index_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priority_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.number_abonentn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name_abonentt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.thems_abobus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.start_time_calling = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // name_abonent
@@ -157,11 +165,64 @@
             this.materialFlatButton1.UseVisualStyleBackColor = false;
             this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.index_number,
+            this.priority_number,
+            this.number_abonentn,
+            this.name_abonentt,
+            this.thems_abobus,
+            this.start_time_calling});
+            this.dataGridView1.Location = new System.Drawing.Point(12, 147);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(572, 171);
+            this.dataGridView1.TabIndex = 9;
+            // 
+            // index_number
+            // 
+            this.index_number.HeaderText = "idx";
+            this.index_number.MaxInputLength = 3;
+            this.index_number.Name = "index_number";
+            this.index_number.ReadOnly = true;
+            // 
+            // priority_number
+            // 
+            this.priority_number.HeaderText = "priority";
+            this.priority_number.Name = "priority_number";
+            this.priority_number.ReadOnly = true;
+            // 
+            // number_abonentn
+            // 
+            this.number_abonentn.HeaderText = "number";
+            this.number_abonentn.Name = "number_abonentn";
+            this.number_abonentn.ReadOnly = true;
+            // 
+            // name_abonentt
+            // 
+            this.name_abonentt.HeaderText = "name";
+            this.name_abonentt.Name = "name_abonentt";
+            this.name_abonentt.ReadOnly = true;
+            // 
+            // thems_abobus
+            // 
+            this.thems_abobus.HeaderText = "Thems";
+            this.thems_abobus.Name = "thems_abobus";
+            this.thems_abobus.ReadOnly = true;
+            // 
+            // start_time_calling
+            // 
+            this.start_time_calling.HeaderText = "start_time";
+            this.start_time_calling.Name = "start_time_calling";
+            this.start_time_calling.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.materialFlatButton1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.abonent_thems);
@@ -174,6 +235,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,6 +253,13 @@
         private System.Windows.Forms.TextBox abonent_thems;
         private System.Windows.Forms.ComboBox comboBox1;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn index_number;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priority_number;
+        private System.Windows.Forms.DataGridViewTextBoxColumn number_abonentn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name_abonentt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn thems_abobus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn start_time_calling;
     }
 }
 

@@ -2,78 +2,74 @@
 
 namespace BST_three
 {
-    internal class Node
+    public class Node<T> where T : CCall
     {
-        private static int index = 0;
-        public int idx;
         public string key;
-        public CCall date;
-        public Node left, right;
+        public T date;
+        public Node<T> left, right;
         public Node()
         {
             left = right = null;
-            idx = index; index++;
         }
-        public Node(CCall date)
+        public Node(T date)
         {
             left = right = null;
-            idx = index; index++;
             key = date.Numbers;
             this.date = date;
             left = right = null;
         }
     }
 
-    class BST
+    public class BST<T> where T : CCall
     {
-        private Node root;
+        private Node<T> root;
         private short count;
 
-        private bool is_empty() { return root == null; }
+        private bool is_empty(Node<T> root) { return root == null; }
 
-        private Node add_node(CCall call)
+        private Node<T> Add_node(T call)
         {
-            Node knot = new Node(call);
+            Node<T> knot = new Node<T>(call);
             count++;
             return knot;
         }
-        private Node insert_hide(Node root, CCall call)
+        private Node<T> Insert_hide(Node<T> root, T call)
         {
-            if (is_empty())
-                root = add_node(call);
-            else if (root.key.CompareTo(call.Numbers) > 0)
-                root.left = insert_hide(root.left, call);
-            else if (root.key.CompareTo(call.Numbers) <= 0)
-                root.right = insert_hide(root.right, call);
+            if (is_empty(root))
+                root = Add_node(call);
+            else if (root.key.CompareTo(call.Numbers) < 0)
+                root.left = Insert_hide(root.left, call);
+            else if (root.key.CompareTo(call.Numbers) >= 0)
+                root.right = Insert_hide(root.right, call);
             return root;
 
         }
-        private Node delete_hide(Node root, CCall call)
+        private Node<T> Delete_hide(Node<T> root, T call)
         {
-            if (is_empty())
+            if (is_empty(root))
                 return null;
-            else if (root.key.CompareTo(call.Numbers) > 0)
-                root.left = delete_hide(root.left, call);
-            else if (root.key.CompareTo(call.Numbers) <= 0)
-                root.right = delete_hide(root.right, call);
+            else if (root.key.CompareTo(call) < 0)
+                root.left = Delete_hide(root.left, call);
+            else if (root.key.CompareTo(call) >= 0)
+                root.right = Delete_hide(root.right, call);
             else
             {
-                if (root.left.right == null)
-                    root = null;
-                else if (root.left == null)
-                    root = root.right;
+                if (root.left == null)
+                    return root.right;
                 else if (root.right == null)
-                    root = root.left;
-                else
-                {
-                    Node temp = root.right;
-                    while (temp.left != null)
-                        temp = temp.left;
-                    root.key = temp.key;
-                    root.right = delete_hide(root.right, temp.date);
-                }
+                    return root.left;
+
+                Node<T> temp = Find_min(root.right);
+                root.key = temp.key;
+                root.right = Delete_hide(root.right, temp.date);
             }
             return root;
+        }
+        private Node<T> Find_min(Node<T> node)
+        {
+            while (node.left != null)
+                node = node.left;
+            return node;
         }
 
         public BST()
@@ -82,32 +78,31 @@ namespace BST_three
             count = 0;
         }
 
-        public void insert(CCall call)
+        public void Insert(T call)
         {
-            root = insert_hide(root, call);
+            root = Insert_hide(root, call);
         }
-        public void delete_list(CCall call)
+        public void Delete_list(T call)
         {
-            delete_hide(root, call);
+            Delete_hide(root, call);
         }
 
-        private bool search_list(Node root, CCall call)
+        private bool Search_list(Node<T> root, T call)
         {
-            if (is_empty())
+            if (root == null)
                 return false;
-            if (root.key == call.Numbers)
+            if (root.key.Equals(call.Numbers))
                 return true;
-            if (call.Numbers.CompareTo(root.key) < 0)
-                return search_list(root.left, call);
-            else if (root.key.CompareTo(call.Numbers) <= 0)
-                return search_list(root.right, call);
-            return false;
+            if (root.key.CompareTo(call.Numbers) < 0)
+                return Search_list(root.left, call);
+            else
+                return Search_list(root.right, call);
         }
-        public bool search_list(CCall call)
-        { return search_list(root, call); }
-        public Node GetNode(Node root, string key)
+        public bool Search_list(T call)
+        { return Search_list(root, call); }
+        public Node<T> GetNode(Node<T> root, string key)
         {
-            if (is_empty())
+            if (is_empty(root))
                 return null;
             else if (key.CompareTo(root.key) < 0)
                 return GetNode(root.left, key);
@@ -116,11 +111,11 @@ namespace BST_three
             return root;
         }
 
-        public Node get_root()
+        public Node<T> Get_root()
         {
             return root;
         }
-        public short size() 
+        public short Size()
         {
             return count;
         }
