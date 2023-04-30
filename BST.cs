@@ -18,7 +18,6 @@ namespace BST_three
             left = right = null;
             key = date.Numbers;
             this.date = date;
-            left = right = null;
         }
     }
 

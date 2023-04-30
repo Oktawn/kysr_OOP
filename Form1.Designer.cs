@@ -43,6 +43,12 @@
             this.name_abonentt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.thems_abobus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.start_time_calling = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Key_materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.Key_comboBox2 = new System.Windows.Forms.ComboBox();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.end_call_textbox = new System.Windows.Forms.TextBox();
+            this.End_call_materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.key_visible = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,9 +60,9 @@
             this.name_abonent.Size = new System.Drawing.Size(100, 20);
             this.name_abonent.TabIndex = 0;
             this.name_abonent.Text = "chel";
-            this.name_abonent.TextChanged += new System.EventHandler(this.name_abonent_TextChanged);
-            this.name_abonent.Enter += new System.EventHandler(this.name_abonent_Enter);
-            this.name_abonent.Leave += new System.EventHandler(this.name_abonent_Leave);
+            this.name_abonent.TextChanged += new System.EventHandler(this.Name_abonent_TextChanged);
+            this.name_abonent.Enter += new System.EventHandler(this.Name_abonent_Enter);
+            this.name_abonent.Leave += new System.EventHandler(this.Name_abonent_Leave);
             // 
             // materialLabel1
             // 
@@ -118,9 +124,9 @@
             this.abonent_number.Size = new System.Drawing.Size(100, 20);
             this.abonent_number.TabIndex = 5;
             this.abonent_number.Text = "+79XXXXXXXXX";
-            this.abonent_number.TextChanged += new System.EventHandler(this.abonent_number_TextChanged);
-            this.abonent_number.Enter += new System.EventHandler(this.abonent_number_Enter);
-            this.abonent_number.Leave += new System.EventHandler(this.abonent_number_Leave);
+            this.abonent_number.TextChanged += new System.EventHandler(this.Abonent_number_TextChanged);
+            this.abonent_number.Enter += new System.EventHandler(this.Abonent_number_Enter);
+            this.abonent_number.Leave += new System.EventHandler(this.Abonent_number_Leave);
             // 
             // abonent_thems
             // 
@@ -130,7 +136,7 @@
             this.abonent_thems.Size = new System.Drawing.Size(100, 20);
             this.abonent_thems.TabIndex = 6;
             this.abonent_thems.Text = "programming";
-            this.abonent_thems.Enter += new System.EventHandler(this.abonent_thems_Enter);
+            this.abonent_thems.Enter += new System.EventHandler(this.Abonent_thems_Enter);
             this.abonent_thems.Leave += new System.EventHandler(this.abonent_thems_Leave);
             // 
             // comboBox1
@@ -153,7 +159,7 @@
             this.materialFlatButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.materialFlatButton1.Depth = 0;
             this.materialFlatButton1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.materialFlatButton1.Location = new System.Drawing.Point(485, 102);
+            this.materialFlatButton1.Location = new System.Drawing.Point(629, 102);
             this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton1.Name = "materialFlatButton1";
@@ -208,11 +214,92 @@
             this.start_time_calling.Name = "start_time_calling";
             this.start_time_calling.ReadOnly = true;
             // 
+            // Key_materialLabel5
+            // 
+            this.Key_materialLabel5.AutoSize = true;
+            this.Key_materialLabel5.Depth = 0;
+            this.Key_materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
+            this.Key_materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Key_materialLabel5.Location = new System.Drawing.Point(457, 87);
+            this.Key_materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.Key_materialLabel5.Name = "Key_materialLabel5";
+            this.Key_materialLabel5.Size = new System.Drawing.Size(33, 19);
+            this.Key_materialLabel5.TabIndex = 10;
+            this.Key_materialLabel5.Text = "Key";
+            // 
+            // Key_comboBox2
+            // 
+            this.Key_comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Key_comboBox2.FormattingEnabled = true;
+            this.Key_comboBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Key_comboBox2.Items.AddRange(new object[] {
+            "Abonent",
+            "Numbers",
+            "Thems",
+            "Priority"});
+            this.Key_comboBox2.Location = new System.Drawing.Point(461, 117);
+            this.Key_comboBox2.Name = "Key_comboBox2";
+            this.Key_comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.Key_comboBox2.TabIndex = 11;
+            // 
+            // materialLabel5
+            // 
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel5.Location = new System.Drawing.Point(625, 186);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(107, 19);
+            this.materialLabel5.TabIndex = 12;
+            this.materialLabel5.Text = "end call by key";
+            // 
+            // end_call_textbox
+            // 
+            this.end_call_textbox.Location = new System.Drawing.Point(629, 220);
+            this.end_call_textbox.Name = "end_call_textbox";
+            this.end_call_textbox.Size = new System.Drawing.Size(100, 20);
+            this.end_call_textbox.TabIndex = 13;
+            // 
+            // End_call_materialFlatButton2
+            // 
+            this.End_call_materialFlatButton2.AutoSize = true;
+            this.End_call_materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.End_call_materialFlatButton2.BackColor = System.Drawing.Color.Black;
+            this.End_call_materialFlatButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.End_call_materialFlatButton2.Depth = 0;
+            this.End_call_materialFlatButton2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.End_call_materialFlatButton2.Location = new System.Drawing.Point(640, 258);
+            this.End_call_materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.End_call_materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.End_call_materialFlatButton2.Name = "End_call_materialFlatButton2";
+            this.End_call_materialFlatButton2.Primary = false;
+            this.End_call_materialFlatButton2.Size = new System.Drawing.Size(75, 36);
+            this.End_call_materialFlatButton2.TabIndex = 14;
+            this.End_call_materialFlatButton2.Text = "end call";
+            this.End_call_materialFlatButton2.UseVisualStyleBackColor = false;
+            this.End_call_materialFlatButton2.Click += new System.EventHandler(this.End_call_materialFlatButton2_Click);
+            // 
+            // key_visible
+            // 
+            this.key_visible.Location = new System.Drawing.Point(496, 88);
+            this.key_visible.Name = "key_visible";
+            this.key_visible.Size = new System.Drawing.Size(100, 20);
+            this.key_visible.TabIndex = 15;
+            this.key_visible.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.key_visible);
+            this.Controls.Add(this.End_call_materialFlatButton2);
+            this.Controls.Add(this.end_call_textbox);
+            this.Controls.Add(this.materialLabel5);
+            this.Controls.Add(this.Key_comboBox2);
+            this.Controls.Add(this.Key_materialLabel5);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.materialFlatButton1);
             this.Controls.Add(this.comboBox1);
@@ -250,6 +337,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn name_abonentt;
         private System.Windows.Forms.DataGridViewTextBoxColumn thems_abobus;
         private System.Windows.Forms.DataGridViewTextBoxColumn start_time_calling;
+        private MaterialSkin.Controls.MaterialLabel Key_materialLabel5;
+        private System.Windows.Forms.ComboBox Key_comboBox2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private System.Windows.Forms.TextBox end_call_textbox;
+        private MaterialSkin.Controls.MaterialFlatButton End_call_materialFlatButton2;
+        private System.Windows.Forms.TextBox key_visible;
     }
 }
 
