@@ -54,12 +54,19 @@ namespace test_K
             root = Insert_Node(root, key, value);
         }
 
-        private Node<K, V> Find_Min(Node<K, V> node)
+        private Node<K, V> GetMin(Node<K, V> node)
         {
             while (node.left != null)
                 node = node.left;
             return node;
         }
+        private Node<K, V> GetMax(Node<K, V> node)
+        {
+            if (Is_Empty(node)) return null;
+            if (node.right == null) return node;
+            return GetMax(node.right);
+        }
+
 
         private Node<K, V> Remove_Hide(Node<K, V> root, K key)
         {
@@ -69,15 +76,28 @@ namespace test_K
                 root.left = Remove_Hide(root.left, key);
             else if (root.key.ToString().CompareTo(key.ToString()) >= 0)
                 root.right = Remove_Hide(root.right, key);
+            //else
+            //{
+            //    if (root.left == null)
+            //        return root.right;
+            //    else if (root.right == null)
+            //        return root.left;
+            //    Node<K, V> temp = Find_Min(root.right);
+            //    root.key = temp.key;
+            //    root.right = Remove_Hide(root.right, key);
+            //}
+
             else
             {
-                if (root.left == null)
-                    return root.right;
-                else if (root.right == null)
-                    return root.left;
-                Node<K, V> temp = Find_Min(root.right);
-                root.key = temp.key;
-                root.right = Remove_Hide(root.right, key);
+                if (root.left == null || root.right == null)
+                    root = root.left ?? root.right;
+                else
+                {
+                    Node<K, V> maxLeft = GetMax(root.left);
+                    root.key = maxLeft.key;
+                    root.value = maxLeft.value;
+                    root.right = Remove_Hide(root.right, key);
+                }
             }
             return root;
         }
@@ -104,13 +124,17 @@ namespace test_K
 
         private Node<K, V> GetNode(Node<K, V> root, string key)
         {
-            if (Is_Empty(root))
-                return null;
-            else if (key.CompareTo(root.key) < 0)
-                return GetNode(root.left, key);
-            else if (key.CompareTo(root.key) > 0)
-                return GetNode(root.right, key);
-            return root;
+            /*if (Is_Empty(root))
+            //    return null;
+            //else if (key.CompareTo(root.key) < 0)
+            //    return GetNode(root.left, key);
+            //else if (key.CompareTo(root.key) > 0)
+            //    return GetNode(root.right, key);
+            return root;*/
+            if (Is_Empty(root)) return null;
+            if (root.key.Equals(key)) return root;
+            return (key.CompareTo(root.key) < 0) ? GetNode(root.left, key)
+                : GetNode(root.right, key);
         }
         public Node<K, V> GetNode(string key)
         {
