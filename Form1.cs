@@ -121,7 +121,7 @@ namespace test_K
                 {
                     if (!char.IsDigit(item))
                     {
-                        MessageBox.Show("lox");
+                        MessageBox.Show("no-no");
                         abonent_number.Text = "+";
                         break;
                     }
