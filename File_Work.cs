@@ -10,7 +10,7 @@ namespace test_K
     class File_work<T> where T : CCall
     {
         readonly string path = "store.txt";
-        
+
         public void Write_in_BST(BST<CCall> three)
         {
             if (File.Exists(path))
@@ -28,7 +28,7 @@ namespace test_K
                             call.Abonent = reader.ReadLine();
                             call.Thems = reader.ReadLine();
                             call.StartCall = Convert.ToDateTime(reader.ReadLine());
-                            three.Insert(call);                            
+                            three.Insert(call);
                         }
                     }
                 else MessageBox.Show("store empty");
@@ -54,6 +54,7 @@ namespace test_K
                          }*/
         }
 
+        
     }
 
 }

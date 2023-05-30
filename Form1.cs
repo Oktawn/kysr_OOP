@@ -1,25 +1,27 @@
 ﻿using Ccall;
-using System;
-using BST_three;
-using System.Linq;
 using MaterialSkin;
-using System.Windows.Forms;
 using MaterialSkin.Controls;
+using System;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace test_K
 {
     public partial class Form1 : MaterialForm
     {
         string key;
+        int coll = 0;
+        readonly string path = "store.txt";
         BST_bad<string, CCall> bad = new BST_bad<string, CCall>();
-        BST<CCall> thee = new BST<CCall>();
-        File_work<CCall> file_Work = new File_work<CCall>();
+        //BST<CCall> thee = new BST<CCall>();
+        //File_work<CCall> file_Work = new File_work<CCall>();
 
         public Form1()
         {
             InitializeComponent();
 
-            file_Work.Write_in_BST(thee);
+            //file_Work.Write_in_BST(thee);
             //Write_DGV(thee);
 
 
@@ -29,7 +31,7 @@ namespace test_K
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey600, Primary.BlueGrey900,
                 Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
-        
+
         private void Name_abonent_TextChanged(object sender, EventArgs e)
         {
 
@@ -44,7 +46,12 @@ namespace test_K
 
         private void materialFlatButton1_Click(object sender, EventArgs e)
         {
-            key = (Key_comboBox2.Text == " ") ? Key_comboBox2.Text : "Numbers";
+            if (Key_comboBox2.Text == "")
+            {
+                MessageBox.Show("Choose a key");
+                return;
+            }
+
             CCall temp = new CCall();
             temp.Priority = temp.Set_priority(comboBox1.Text);
             temp.Thems = (temp.Set_string(abonent_thems.Text)) ? abonent_thems.Text : temp.Thems;
@@ -62,30 +69,34 @@ namespace test_K
             switch (key)
             {
                 case "Priority":
-                    if (!bad.Search_list(temp.Priority.ToString()))
+                    //if (!bad.Search_list(temp.Priority.ToString()))
+                    if (bad.Search_list(temp.Priority.ToString()))
                     {
                         bad.Insert(temp.Priority.ToString(), temp);
-                        bad.Read_BST();
-                        Write_DGV(temp);
+                        Change_DCV(temp);
                     }
                     else
-                        MessageBox.Show("this abonent already calling");
+                    {
+                        bad.Insert(temp.Priority.ToString(), temp);
+                        Write_DGV(temp);
+                    }
                     break;
                 case "Thems":
-                    if (!bad.Search_list(temp.Thems))
+                    if (bad.Search_list(temp.Thems))
                     {
                         bad.Insert(temp.Thems, temp);
-                        bad.Read_BST();
-                        Write_DGV(temp);
+                        Change_DCV(temp);
                     }
                     else
-                        MessageBox.Show("this abonent already calling");
+                    {
+                        bad.Insert(temp.Thems, temp);
+                        Write_DGV(temp);
+                    }
                     break;
                 case "Numbers":
                     if (!bad.Search_list(temp.Numbers))
                     {
                         bad.Insert(temp.Numbers, temp);
-                        bad.Read_BST();
                         Write_DGV(temp);
                     }
                     else
@@ -95,20 +106,12 @@ namespace test_K
                     if (!bad.Search_list(temp.Abonent))
                     {
                         bad.Insert(temp.Abonent, temp);
-                        bad.Read_BST();
                         Write_DGV(temp);
                     }
                     else
                         MessageBox.Show("this abonent already calling");
                     break;
             }
-
-
-            Key_comboBox2.Visible = false;
-            key_visible.Visible = true;
-            key_visible.Text = (Key_comboBox2.Text == " ") ? Key_comboBox2.Text : "Numbers";
-            key_visible.ReadOnly = true;
-            Key_materialLabel5.Visible = true;
         }
 
         private void Abonent_number_Enter(object sender, EventArgs e)
@@ -163,6 +166,147 @@ namespace test_K
                 abonent_thems.Text = "programming";
         }
 
+
+
+        private void End_call_materialFlatButton2_Click(object sender, EventArgs e)
+        {
+            string remove = end_call_textbox.Text;
+            if (bad.Search_list(remove))
+            {
+
+                bad.Remove(remove);
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    if (remove == dataGridView1.Rows[i].Cells[coll].Value.ToString())
+                    {
+                        dataGridView1.Rows.RemoveAt(i);
+                        dataGridView1.Refresh();
+                        break;
+                    }
+                }
+            }
+            else
+                MessageBox.Show($"not found call by {key}, {remove}");
+        }
+
+        private void materialFlatButton3_upload_Click(object sender, EventArgs e)
+        {
+
+            if (Key_comboBox2.Text == "")
+            {
+                MessageBox.Show("Choose a key");
+                return;
+            }
+            dataGridView1.Rows.Clear();
+            bad.Clear();
+
+
+            if (File.Exists(path))
+            {
+                CCall temp = new CCall();
+                int line_file = File.ReadLines(path).Count(), count = line_file / 5;
+                if (line_file > 0)
+                {
+                    //dataGridView1.Rows.Add(count);
+                    //using (StreamReader reader = File.OpenText(path))
+                    //    for (int i = 0, j = 0; i < count; j++)
+                    //    {
+                    //        //j = (j == 4) ? (0, i++) : j;
+
+                    //        if (j == 5)
+                    //        {
+                    //            j = 0;
+                    //            i++;
+                    //        }
+                    //        dataGridView1.Rows[i].Cells[j].Value = reader.ReadLine();
+                    //    }
+
+                    using (StreamReader reader = File.OpenText(path))
+                        for (int i = 0; i < count; i++)
+                        {
+                            //call.Priority = Convert.ToBoolean(reader.ReadLine());
+                            temp.Priority = temp.Set_priority(reader.ReadLine());
+                            temp.Numbers = reader.ReadLine();
+                            temp.Abonent = reader.ReadLine();
+                            temp.Thems = reader.ReadLine();
+                            temp.StartCall = Convert.ToDateTime(reader.ReadLine());
+                            switch (key)
+                            {
+                                case "Priority":
+                                    if (bad.Search_list(temp.Priority.ToString()))
+                                    {
+                                        bad.Insert(temp.Priority.ToString(), temp);
+                                        Change_DCV(temp);
+                                    }
+                                    else
+                                    {
+                                        bad.Insert(temp.Priority.ToString(), temp);
+                                        Write_DGV(temp);
+                                    }
+                                    break;
+                                case "Thems":
+                                    if (bad.Search_list(temp.Thems))
+                                    {
+                                        bad.Insert(temp.Thems, temp);
+                                        Change_DCV(temp);
+                                    }
+                                    else
+                                    {
+                                        bad.Insert(temp.Thems, temp);
+                                        Write_DGV(temp);
+                                    }
+                                    break;
+                                case "Abonent":
+                                    if (!bad.Search_list(temp.Abonent))
+                                    {
+                                        bad.Insert(temp.Abonent, temp);
+                                        Write_DGV(temp);
+                                    }
+                                    break;
+                                case "Numbers":
+                                    if (!bad.Search_list(temp.Numbers))
+                                    {
+                                        bad.Insert(temp.Numbers, temp);
+                                        Write_DGV(temp);
+                                    }
+                                    break;
+                            }
+                        }
+                }
+
+                else MessageBox.Show("store empty");
+            }
+            else
+                MessageBox.Show("file not found");
+        }
+
+        private void materialFlatButton2_save_Click(object sender, EventArgs e)
+        {
+            bad.Read_BST(path);
+        }
+
+        private void SelectKey_materialFlatButton2_Click(object sender, EventArgs e)
+        {
+            if (Key_comboBox2.Text == "")
+            {
+                MessageBox.Show("Choose a key");
+                return;
+            }
+            Key_comboBox2.Visible = false;
+            key_visible.Visible = true;
+            key_visible.Text = Key_comboBox2.Text;
+            key_visible.ReadOnly = true;
+            Key_materialLabel5.Visible = true;
+            key = Key_comboBox2.Text;
+
+            foreach (DataGridViewColumn col in dataGridView1.Columns)
+                if (col.HeaderText.ToUpper().Trim() == key.ToUpper().Trim())
+                {
+                    coll = col.Index;
+                    break;
+                }
+        }
+
         public void Write_DGV(CCall C)
         {
 
@@ -178,18 +322,19 @@ namespace test_K
             }
         }
 
-        private void End_call_materialFlatButton2_Click(object sender, EventArgs e)
+        public void Change_DCV(CCall C)
         {
-            int row;
-            string remove = end_call_textbox.Text;
-            if (bad.Search_list(remove))
+            int n = dataGridView1.RowCount;
+            int i = 0;
+            switch (i)
             {
-                row = bad.GetNode(remove).Id;
-                bad.Remove(remove); 
-                dataGridView1.Rows.RemoveAt(row - 1);
-                dataGridView1.Refresh();
+                case 0: { dataGridView1.Rows[n].Cells[i].Value = C.Priority; i++; goto case 1; }
+                case 1: { dataGridView1.Rows[n].Cells[i].Value = C.Numbers; i++; goto case 2; }
+                case 2: { dataGridView1.Rows[n].Cells[i].Value = C.Abonent; i++; goto case 3; }
+                case 3: { dataGridView1.Rows[n].Cells[i].Value = C.Thems; i++; goto case 4; }
+                case 4: { dataGridView1.Rows[n].Cells[i].Value = C.StartCall.ToString(); break; }
             }
-
         }
+
     }
 }

@@ -3,22 +3,20 @@ using System.IO;
 
 namespace test_K
 {
-
-
     public class Node<K, V> where V : CCall
     {
-        public int Id = 0;
+
         public K key;
         public V value;
         public Node<K, V> left, right;
         public Node()
         {
-            Id++;
+
             left = right = null;
         }
         public Node(K key, V value)
         {
-            Id++;
+
             left = right = null;
             this.key = key;
             this.value = value;
@@ -32,6 +30,16 @@ namespace test_K
 
         private bool Is_Empty(Node<K, V> node) { return node == null; }
 
+        public void Clear()
+        {
+            root = null;
+        }
+
+        //private void Clear()
+        //{
+
+        //}
+
         private Node<K, V> Add_Node(K key, V value)
         {
             Node<K, V> knot = new Node<K, V>(key, value);
@@ -42,6 +50,8 @@ namespace test_K
         {
             if (Is_Empty(root))
                 root = Add_Node(key, value);
+            else if (root.key.Equals(key))
+                root.value = value;
             else if (root.key.ToString().CompareTo(key.ToString()) < 0)
                 root.left = Insert_Node(root.left, key, value);
             else
@@ -70,39 +80,32 @@ namespace test_K
 
         private Node<K, V> Remove_Hide(Node<K, V> root, K key)
         {
-            if (Is_Empty(root))
+            if (root == null)
                 return null;
             else if (root.key.ToString().CompareTo(key.ToString()) < 0)
                 root.left = Remove_Hide(root.left, key);
-            else if (root.key.ToString().CompareTo(key.ToString()) >= 0)
+            else if (root.key.ToString().CompareTo(key.ToString()) > 0)
                 root.right = Remove_Hide(root.right, key);
-            //else
-            //{
-            //    if (root.left == null)
-            //        return root.right;
-            //    else if (root.right == null)
-            //        return root.left;
-            //    Node<K, V> temp = Find_Min(root.right);
-            //    root.key = temp.key;
-            //    root.right = Remove_Hide(root.right, key);
-            //}
-
             else
             {
-                if (root.left == null || root.right == null)
+                if (root.left == null && root.right == null)
+                    root = null;
+                else if (root.left == null || root.right == null)
                     root = root.left ?? root.right;
                 else
                 {
-                    Node<K, V> maxLeft = GetMax(root.left);
+                    Node<K, V> maxLeft = GetMin(root.right);
                     root.key = maxLeft.key;
                     root.value = maxLeft.value;
                     root.right = Remove_Hide(root.right, key);
                 }
             }
+
             return root;
         }
         public void Remove(K key)
         {
+
             root = Remove_Hide(root, key);
         }
 
@@ -149,9 +152,9 @@ namespace test_K
         }
 
 
-        private readonly string path = "store.txt";
 
-        public void Read_BST()
+
+        public void Read_BST(string path)
         {
             using (StreamWriter writer = new StreamWriter(path))
                 Read_BST(root, writer);

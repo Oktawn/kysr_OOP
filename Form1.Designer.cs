@@ -36,7 +36,7 @@
             this.abonent_number = new System.Windows.Forms.TextBox();
             this.abonent_thems = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.CreateCall_materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.priority_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.number_abonentn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +49,9 @@
             this.end_call_textbox = new System.Windows.Forms.TextBox();
             this.End_call_materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
             this.key_visible = new System.Windows.Forms.TextBox();
+            this.UploadCalls_materialFlatButton3 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.SaveCalls_materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.SelectKey_materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -151,24 +154,24 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 7;
             // 
-            // materialFlatButton1
+            // CreateCall_materialFlatButton1
             // 
-            this.materialFlatButton1.AutoSize = true;
-            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton1.BackColor = System.Drawing.Color.Black;
-            this.materialFlatButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.materialFlatButton1.Location = new System.Drawing.Point(629, 102);
-            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton1.Name = "materialFlatButton1";
-            this.materialFlatButton1.Primary = false;
-            this.materialFlatButton1.Size = new System.Drawing.Size(99, 36);
-            this.materialFlatButton1.TabIndex = 8;
-            this.materialFlatButton1.Text = "create call";
-            this.materialFlatButton1.UseVisualStyleBackColor = false;
-            this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
+            this.CreateCall_materialFlatButton1.AutoSize = true;
+            this.CreateCall_materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.CreateCall_materialFlatButton1.BackColor = System.Drawing.Color.Black;
+            this.CreateCall_materialFlatButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.CreateCall_materialFlatButton1.Depth = 0;
+            this.CreateCall_materialFlatButton1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.CreateCall_materialFlatButton1.Location = new System.Drawing.Point(631, 147);
+            this.CreateCall_materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.CreateCall_materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CreateCall_materialFlatButton1.Name = "CreateCall_materialFlatButton1";
+            this.CreateCall_materialFlatButton1.Primary = false;
+            this.CreateCall_materialFlatButton1.Size = new System.Drawing.Size(99, 36);
+            this.CreateCall_materialFlatButton1.TabIndex = 8;
+            this.CreateCall_materialFlatButton1.Text = "create call";
+            this.CreateCall_materialFlatButton1.UseVisualStyleBackColor = false;
+            this.CreateCall_materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
             // 
             // dataGridView1
             // 
@@ -181,24 +184,24 @@
             this.start_time_calling});
             this.dataGridView1.Location = new System.Drawing.Point(12, 147);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(572, 171);
+            this.dataGridView1.Size = new System.Drawing.Size(545, 171);
             this.dataGridView1.TabIndex = 9;
             // 
             // priority_number
             // 
-            this.priority_number.HeaderText = "priority";
+            this.priority_number.HeaderText = "Priority";
             this.priority_number.Name = "priority_number";
             this.priority_number.ReadOnly = true;
             // 
             // number_abonentn
             // 
-            this.number_abonentn.HeaderText = "number";
+            this.number_abonentn.HeaderText = "Numbers";
             this.number_abonentn.Name = "number_abonentn";
             this.number_abonentn.ReadOnly = true;
             // 
             // name_abonentt
             // 
-            this.name_abonentt.HeaderText = "name";
+            this.name_abonentt.HeaderText = "Abonent";
             this.name_abonentt.Name = "name_abonentt";
             this.name_abonentt.ReadOnly = true;
             // 
@@ -210,7 +213,7 @@
             // 
             // start_time_calling
             // 
-            this.start_time_calling.HeaderText = "start_time";
+            this.start_time_calling.HeaderText = "Start_time";
             this.start_time_calling.Name = "start_time_calling";
             this.start_time_calling.ReadOnly = true;
             // 
@@ -248,7 +251,7 @@
             this.materialLabel5.Depth = 0;
             this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(625, 186);
+            this.materialLabel5.Location = new System.Drawing.Point(627, 231);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(107, 19);
@@ -257,7 +260,7 @@
             // 
             // end_call_textbox
             // 
-            this.end_call_textbox.Location = new System.Drawing.Point(629, 220);
+            this.end_call_textbox.Location = new System.Drawing.Point(631, 265);
             this.end_call_textbox.Name = "end_call_textbox";
             this.end_call_textbox.Size = new System.Drawing.Size(100, 20);
             this.end_call_textbox.TabIndex = 13;
@@ -270,7 +273,7 @@
             this.End_call_materialFlatButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.End_call_materialFlatButton2.Depth = 0;
             this.End_call_materialFlatButton2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.End_call_materialFlatButton2.Location = new System.Drawing.Point(640, 258);
+            this.End_call_materialFlatButton2.Location = new System.Drawing.Point(642, 303);
             this.End_call_materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.End_call_materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
             this.End_call_materialFlatButton2.Name = "End_call_materialFlatButton2";
@@ -283,17 +286,68 @@
             // 
             // key_visible
             // 
-            this.key_visible.Location = new System.Drawing.Point(496, 88);
+            this.key_visible.Location = new System.Drawing.Point(496, 86);
             this.key_visible.Name = "key_visible";
-            this.key_visible.Size = new System.Drawing.Size(100, 20);
+            this.key_visible.Size = new System.Drawing.Size(86, 20);
             this.key_visible.TabIndex = 15;
             this.key_visible.Visible = false;
+            // 
+            // UploadCalls_materialFlatButton3
+            // 
+            this.UploadCalls_materialFlatButton3.AutoSize = true;
+            this.UploadCalls_materialFlatButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.UploadCalls_materialFlatButton3.Depth = 0;
+            this.UploadCalls_materialFlatButton3.Location = new System.Drawing.Point(16, 366);
+            this.UploadCalls_materialFlatButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.UploadCalls_materialFlatButton3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.UploadCalls_materialFlatButton3.Name = "UploadCalls_materialFlatButton3";
+            this.UploadCalls_materialFlatButton3.Primary = false;
+            this.UploadCalls_materialFlatButton3.Size = new System.Drawing.Size(109, 36);
+            this.UploadCalls_materialFlatButton3.TabIndex = 17;
+            this.UploadCalls_materialFlatButton3.Text = "upload calls\r\n";
+            this.UploadCalls_materialFlatButton3.UseVisualStyleBackColor = true;
+            this.UploadCalls_materialFlatButton3.Click += new System.EventHandler(this.materialFlatButton3_upload_Click);
+            // 
+            // SaveCalls_materialFlatButton2
+            // 
+            this.SaveCalls_materialFlatButton2.AutoSize = true;
+            this.SaveCalls_materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.SaveCalls_materialFlatButton2.Depth = 0;
+            this.SaveCalls_materialFlatButton2.Location = new System.Drawing.Point(133, 366);
+            this.SaveCalls_materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.SaveCalls_materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.SaveCalls_materialFlatButton2.Name = "SaveCalls_materialFlatButton2";
+            this.SaveCalls_materialFlatButton2.Primary = false;
+            this.SaveCalls_materialFlatButton2.Size = new System.Drawing.Size(91, 36);
+            this.SaveCalls_materialFlatButton2.TabIndex = 18;
+            this.SaveCalls_materialFlatButton2.Text = "Save calls";
+            this.SaveCalls_materialFlatButton2.UseVisualStyleBackColor = true;
+            this.SaveCalls_materialFlatButton2.Click += new System.EventHandler(this.materialFlatButton2_save_Click);
+            // 
+            // SelectKey_materialFlatButton2
+            // 
+            this.SelectKey_materialFlatButton2.AutoSize = true;
+            this.SelectKey_materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.SelectKey_materialFlatButton2.Depth = 0;
+            this.SelectKey_materialFlatButton2.Location = new System.Drawing.Point(631, 86);
+            this.SelectKey_materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.SelectKey_materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.SelectKey_materialFlatButton2.Name = "SelectKey_materialFlatButton2";
+            this.SelectKey_materialFlatButton2.Primary = false;
+            this.SelectKey_materialFlatButton2.Size = new System.Drawing.Size(89, 36);
+            this.SelectKey_materialFlatButton2.TabIndex = 19;
+            this.SelectKey_materialFlatButton2.Text = "select key";
+            this.SelectKey_materialFlatButton2.UseVisualStyleBackColor = true;
+            this.SelectKey_materialFlatButton2.Click += new System.EventHandler(this.SelectKey_materialFlatButton2_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.SelectKey_materialFlatButton2);
+            this.Controls.Add(this.SaveCalls_materialFlatButton2);
+            this.Controls.Add(this.UploadCalls_materialFlatButton3);
             this.Controls.Add(this.key_visible);
             this.Controls.Add(this.End_call_materialFlatButton2);
             this.Controls.Add(this.end_call_textbox);
@@ -301,7 +355,7 @@
             this.Controls.Add(this.Key_comboBox2);
             this.Controls.Add(this.Key_materialLabel5);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.materialFlatButton1);
+            this.Controls.Add(this.CreateCall_materialFlatButton1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.abonent_thems);
             this.Controls.Add(this.abonent_number);
@@ -330,19 +384,22 @@
         private System.Windows.Forms.TextBox abonent_number;
         private System.Windows.Forms.TextBox abonent_thems;
         private System.Windows.Forms.ComboBox comboBox1;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
+        private MaterialSkin.Controls.MaterialFlatButton CreateCall_materialFlatButton1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priority_number;
-        private System.Windows.Forms.DataGridViewTextBoxColumn number_abonentn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name_abonentt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn thems_abobus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn start_time_calling;
         private MaterialSkin.Controls.MaterialLabel Key_materialLabel5;
         private System.Windows.Forms.ComboBox Key_comboBox2;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private System.Windows.Forms.TextBox end_call_textbox;
         private MaterialSkin.Controls.MaterialFlatButton End_call_materialFlatButton2;
         private System.Windows.Forms.TextBox key_visible;
+        private MaterialSkin.Controls.MaterialFlatButton UploadCalls_materialFlatButton3;
+        private MaterialSkin.Controls.MaterialFlatButton SaveCalls_materialFlatButton2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priority_number;
+        private System.Windows.Forms.DataGridViewTextBoxColumn number_abonentn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name_abonentt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn thems_abobus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn start_time_calling;
+        private MaterialSkin.Controls.MaterialFlatButton SelectKey_materialFlatButton2;
     }
 }
 
