@@ -38,7 +38,6 @@ namespace Ccall
             start_timer = C.start_timer;
         }
 
-
         public bool Priority
         {
             get { return priority; }
@@ -106,6 +105,19 @@ namespace Ccall
                 + Thems + Environment.NewLine
                 + StartCall.ToString() + Environment.NewLine;
         }
+
+        public string Get_end()
+        {
+            return
+                Priority + Environment.NewLine
+                + Numbers + Environment.NewLine
+                + Abonent + Environment.NewLine
+                + Thems + Environment.NewLine
+                + StartCall.ToString() + "\t"
+                + DateTime.Now + " second:" + Duration_time +
+                Environment.NewLine + Environment.NewLine;
+        }
+
 
         public int CompareTo(CCall other)
         {

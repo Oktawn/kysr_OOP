@@ -13,17 +13,13 @@ namespace test_K
         string key;
         int coll = 0;
         readonly string path = "store.txt";
+        readonly string path_end = "end_call.txt";
         BST_bad<string, CCall> bad = new BST_bad<string, CCall>();
-        //BST<CCall> thee = new BST<CCall>();
-        //File_work<CCall> file_Work = new File_work<CCall>();
+
 
         public Form1()
         {
             InitializeComponent();
-
-            //file_Work.Write_in_BST(thee);
-            //Write_DGV(thee);
-
 
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
@@ -46,7 +42,7 @@ namespace test_K
 
         private void materialFlatButton1_Click(object sender, EventArgs e)
         {
-            if (Key_comboBox2.Text == "")
+            if (key_visible.Text == "")
             {
                 MessageBox.Show("Choose a key");
                 return;
@@ -57,14 +53,7 @@ namespace test_K
             temp.Thems = (temp.Set_string(abonent_thems.Text)) ? abonent_thems.Text : temp.Thems;
             temp.Abonent = (temp.Set_string(name_abonent.Text)) ? name_abonent.Text : temp.Abonent;
             temp.Numbers = (temp.Set_number(abonent_number.Text)) ? abonent_number.Text : temp.Numbers;
-            /*if (!thee.Search_list(temp))
-            {
-                thee.Insert(temp);
-                thee.Read_BST();
-                Write_DGV(temp);
-            }
-            else
-                MessageBox.Show("this abonent already calling");*/
+
 
             switch (key)
             {
@@ -173,7 +162,8 @@ namespace test_K
             string remove = end_call_textbox.Text;
             if (bad.Search_list(remove))
             {
-
+                Node<string, CCall> temp = bad.GetNode(remove);
+                bad.Read_BST_end(path_end, temp);
                 bad.Remove(remove);
                 for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
@@ -192,12 +182,13 @@ namespace test_K
         private void materialFlatButton3_upload_Click(object sender, EventArgs e)
         {
 
-            if (Key_comboBox2.Text == "")
+            if (key_visible.Text == "")
             {
                 MessageBox.Show("Choose a key");
                 return;
             }
             dataGridView1.Rows.Clear();
+
             bad.Clear();
 
 

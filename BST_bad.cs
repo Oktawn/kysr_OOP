@@ -11,12 +11,10 @@ namespace test_K
         public Node<K, V> left, right;
         public Node()
         {
-
             left = right = null;
         }
         public Node(K key, V value)
         {
-
             left = right = null;
             this.key = key;
             this.value = value;
@@ -29,16 +27,6 @@ namespace test_K
         private short count;
 
         private bool Is_Empty(Node<K, V> node) { return node == null; }
-
-        public void Clear()
-        {
-            root = null;
-        }
-
-        //private void Clear()
-        //{
-
-        //}
 
         private Node<K, V> Add_Node(K key, V value)
         {
@@ -78,14 +66,14 @@ namespace test_K
         }
 
 
-        private Node<K, V> Remove_Hide(Node<K, V> root, K key)
+        private Node<K, V> Remove(Node<K, V> root, K key)
         {
             if (root == null)
                 return null;
             else if (root.key.ToString().CompareTo(key.ToString()) < 0)
-                root.left = Remove_Hide(root.left, key);
+                root.left = Remove(root.left, key);
             else if (root.key.ToString().CompareTo(key.ToString()) > 0)
-                root.right = Remove_Hide(root.right, key);
+                root.right = Remove(root.right, key);
             else
             {
                 if (root.left == null && root.right == null)
@@ -97,7 +85,7 @@ namespace test_K
                     Node<K, V> maxLeft = GetMin(root.right);
                     root.key = maxLeft.key;
                     root.value = maxLeft.value;
-                    root.right = Remove_Hide(root.right, key);
+                    root.right = Remove(root.right, key);
                 }
             }
 
@@ -105,8 +93,7 @@ namespace test_K
         }
         public void Remove(K key)
         {
-
-            root = Remove_Hide(root, key);
+            root = Remove(root, key);
         }
 
         private bool Search_list(Node<K, V> root, K key)
@@ -127,35 +114,42 @@ namespace test_K
 
         private Node<K, V> GetNode(Node<K, V> root, string key)
         {
-            /*if (Is_Empty(root))
-            //    return null;
-            //else if (key.CompareTo(root.key) < 0)
-            //    return GetNode(root.left, key);
-            //else if (key.CompareTo(root.key) > 0)
-            //    return GetNode(root.right, key);
-            return root;*/
-            if (Is_Empty(root)) return null;
-            if (root.key.Equals(key)) return root;
-            return (key.CompareTo(root.key) < 0) ? GetNode(root.left, key)
-                : GetNode(root.right, key);
+            if (Is_Empty(root))
+                return null;
+            else if (key.CompareTo(root.key) < 0)
+                return GetNode(root.left, key);
+            else if (key.CompareTo(root.key) > 0)
+                return GetNode(root.right, key);
+            else
+                return root;
+            //if (Is_Empty(root)) return null;
+            //if (root.key.Equals(key)) return root;
+            //return (key.CompareTo(root.key) < 0) ? GetNode(root.left, key)
+            //    : GetNode(root.right, key);
         }
         public Node<K, V> GetNode(string key)
         {
             return GetNode(root, key);
         }
+        //
+        //public Node<K, V> Get_root()
+        //{ return root; }
 
-        public Node<K, V> Get_root()
-        { return root; }
         public short Size()
         {
             return count;
+        }
+
+        public void Clear()
+        {
+            root = null;
+            count = 0;
         }
 
         public K GetKey()
         {
             return root.key;
         }
-
 
         public void Read_BST(string path)
         {
@@ -169,9 +163,19 @@ namespace test_K
             {
                 Read_BST(root.left, writer);
                 foreach (var item in root.value.Get_all())
+                    //foreach (var item in root.value.)
                     writer.Write(item);
                 Read_BST(root.right, writer);
             }
+        }
+
+        public void Read_BST_end(string path, Node<K, V> node)
+        {
+            using (StreamWriter writer = new StreamWriter(path,true))
+                //foreach (var item in root.value.Get_end())
+                //foreach (var item in root.value.)
+                writer.Write(node.value.Get_end());
+            
         }
     }
 }

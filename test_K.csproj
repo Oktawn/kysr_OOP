@@ -283,10 +283,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BST.cs" />
     <Compile Include="BST_bad.cs" />
     <Compile Include="CCall.cs" />
-    <Compile Include="File_Work.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
