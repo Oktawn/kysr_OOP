@@ -151,7 +151,10 @@ namespace test_K
             return count;
         }
 
-
+        public K GetKey()
+        {
+            return root.key;
+        }
 
 
         public void Read_BST(string path)

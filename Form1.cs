@@ -207,19 +207,20 @@ namespace test_K
                 int line_file = File.ReadLines(path).Count(), count = line_file / 5;
                 if (line_file > 0)
                 {
-                    //dataGridView1.Rows.Add(count);
-                    //using (StreamReader reader = File.OpenText(path))
-                    //    for (int i = 0, j = 0; i < count; j++)
-                    //    {
-                    //        //j = (j == 4) ? (0, i++) : j;
+                    /*dataGridView1.Rows.Add(count);
+                    using (StreamReader reader = File.OpenText(path))
+                        for (int i = 0, j = 0; i < count; j++)
+                        {
+                            //j = (j == 4) ? (0, i++) : j;
 
-                    //        if (j == 5)
-                    //        {
-                    //            j = 0;
-                    //            i++;
-                    //        }
-                    //        dataGridView1.Rows[i].Cells[j].Value = reader.ReadLine();
-                    //    }
+                            if (j == 5)
+                            {
+                                j = 0;
+                                i++;
+                            }
+                            dataGridView1.Rows[i].Cells[j].Value = reader.ReadLine();
+                        }
+                    */
 
                     using (StreamReader reader = File.OpenText(path))
                         for (int i = 0; i < count; i++)
@@ -324,7 +325,14 @@ namespace test_K
 
         public void Change_DCV(CCall C)
         {
-            int n = dataGridView1.RowCount;
+            int n = 0;
+            for (int j = 0; j < dataGridView1.RowCount; j++)
+            {
+                if (dataGridView1.Rows[j].Cells[coll].Value.ToString() == bad.GetKey())
+                {
+                    n = j; break;
+                }
+            }
             int i = 0;
             switch (i)
             {
