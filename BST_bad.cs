@@ -116,16 +116,13 @@ namespace test_K
         {
             if (Is_Empty(root))
                 return null;
-            else if (key.CompareTo(root.key) < 0)
+            else if (root.key.ToString().CompareTo(key.ToString()) < 0)
                 return GetNode(root.left, key);
-            else if (key.CompareTo(root.key) > 0)
+            else if (root.key.ToString().CompareTo(key.ToString()) > 0)
                 return GetNode(root.right, key);
             else
                 return root;
-            //if (Is_Empty(root)) return null;
-            //if (root.key.Equals(key)) return root;
-            //return (key.CompareTo(root.key) < 0) ? GetNode(root.left, key)
-            //    : GetNode(root.right, key);
+          
         }
         public Node<K, V> GetNode(string key)
         {
@@ -163,7 +160,6 @@ namespace test_K
             {
                 Read_BST(root.left, writer);
                 foreach (var item in root.value.Get_all())
-                    //foreach (var item in root.value.)
                     writer.Write(item);
                 Read_BST(root.right, writer);
             }
@@ -172,8 +168,6 @@ namespace test_K
         public void Read_BST_end(string path, Node<K, V> node)
         {
             using (StreamWriter writer = new StreamWriter(path,true))
-                //foreach (var item in root.value.Get_end())
-                //foreach (var item in root.value.)
                 writer.Write(node.value.Get_end());
             
         }

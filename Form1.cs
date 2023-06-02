@@ -194,29 +194,15 @@ namespace test_K
 
             if (File.Exists(path))
             {
-                CCall temp = new CCall();
                 int line_file = File.ReadLines(path).Count(), count = line_file / 5;
                 if (line_file > 0)
                 {
-                    /*dataGridView1.Rows.Add(count);
-                    using (StreamReader reader = File.OpenText(path))
-                        for (int i = 0, j = 0; i < count; j++)
-                        {
-                            //j = (j == 4) ? (0, i++) : j;
 
-                            if (j == 5)
-                            {
-                                j = 0;
-                                i++;
-                            }
-                            dataGridView1.Rows[i].Cells[j].Value = reader.ReadLine();
-                        }
-                    */
 
                     using (StreamReader reader = File.OpenText(path))
                         for (int i = 0; i < count; i++)
                         {
-                            //call.Priority = Convert.ToBoolean(reader.ReadLine());
+                            CCall temp = new CCall();
                             temp.Priority = temp.Set_priority(reader.ReadLine());
                             temp.Numbers = reader.ReadLine();
                             temp.Abonent = reader.ReadLine();
